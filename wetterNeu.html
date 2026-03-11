@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wetterdisplay Kitzbühel Sonnberg</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #0a0a0a;
+            --accent-blue: #00aaff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --border-color: #222;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            width: 720px;
+            height: 1280px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header h2 { font-weight: 300; margin: 0; font-size: 28px; }
+        header h1 { font-weight: 800; margin: 5px 0; font-size: 60px; color: var(--text-main); text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+
+        .current-weather {
+            width: 640px;
+            background: linear-gradient(180deg, #0f172a 0%, #000 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-top: 30px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,170,255,0.1);
+        }
+
+        .section-title {
+            align-self: flex-start;
+            margin-left: 40px;
+            margin-top: 40px;
+            color: var(--text-dim);
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .temp-main { font-size: 140px; font-weight: 700; margin: 10px 0; }
+        .condition-text { font-size: 30px; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; }
+        .hi-low { font-size: 24px; color: var(--text-dim); margin-top: 15px; }
+
+        /* Hourly Forecast */
+        .hourly-container {
+            display: flex;
+            justify-content: space-between;
+            width: 640px;
+            margin-top: 20px;
+        }
+
+        .hour-card {
+            text-align: center;
+            flex: 1;
+            padding: 15px 5px;
+            border-right: 1px solid #111;
+        }
+        .hour-card:last-child { border: none; }
+        .hour-card .label { font-size: 18px; color: var(--text-dim); margin-bottom: 10px; }
+        .hour-card .icon { font-size: 35px; margin: 15px 0; }
+        .hour-card .temp { font-size: 28px; font-weight: bold; }
+        .hour-card .prob { font-size: 16px; color: var(--accent-blue); margin-top: 5px; }
+
+        /* 7 Day Forecast */
+        .daily-container {
+            width: 640px;
+            margin-top: 20px;
+        }
+
+        .day-row {
+            display: flex;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .day-name { width: 120px; font-size: 24px; font-weight: bold; }
+        .day-cond { flex-grow: 1; color: var(--text-dim); font-size: 20px; }
+        .day-temp-range { font-size: 26px; font-weight: bold; text-align: right; width: 150px; }
+
+        .footer-info {
+            margin-top: auto;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #444;
+        }
+
+        /* Simple Icons using Emoji or Symbols */
+        .icon-sun::before { content: "☀️"; }
+        .icon-cloud::before { content: "☁️"; }
+        .icon-partly::before { content: "⛅"; }
+        .icon-rain::before { content: "🌧️"; }
+        .icon-snow::before { content: "❄️"; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>KITZBÜHEL</h2>
+        <h1>SONNBERG</h1>
+    </header>
+
+    <div class="section-title">Aktuelles Wetter</div>
+    <div class="current-weather">
+        <div style="font-size: 80px;">⛅</div>
+        <div class="temp-main">7°C</div>
+        <div class="condition-text">Teils Bewölkt</div>
+        <div class="hi-low">Hoch: 11°C &nbsp;|&nbsp; Tief: 2°C</div>
+    </div>
+
+    <div class="section-title">Stündliche Vorhersage</div>
+    <div class="hourly-container">
+        <div class="hour-card">
+            <div class="label">In 2 Std</div>
+            <div class="icon icon-partly"></div>
+            <div class="temp">7°C</div>
+            <div class="prob">10%</div>
+        </div>
+        <div class="hour-card">
+            <div class="label">In 4 Std</div>
+            <div class="icon icon-cloud"></div>
+            <div class="temp">8°C</div>
+            <div class="prob">20%</div>
+        </div>
+        <div class="hour-card">
+            <div class="label">In 6 Std</div>
+            <div class="icon icon-cloud"></div>
+            <div class="temp">9°C</div>
+            <div class="prob">20%</div>
+        </div>
+        <div class="hour-card">
+            <div class="label">In 8 Std</div>
+            <div class="icon icon-cloud"></div>
+            <div class="temp">8°C</div>
+            <div class="prob">30%</div>
+        </div>
+        <div class="hour-card">
+            <div class="label">In 10 Std</div>
+            <div class="icon icon-rain"></div>
+            <div class="temp">6°C</div>
+            <div class="prob">80%</div>
+        </div>
+        <div class="hour-card">
+            <div class="label">In 12 Std</div>
+            <div class="icon icon-rain"></div>
+            <div class="temp">5°C</div>
+            <div class="prob">90%</div>
+        </div>
+    </div>
+
+    <div class="section-title">7-Tage Vorschau</div>
+    <div class="daily-container">
+        <div class="day-row">
+            <div class="day-name">Heute</div>
+            <div class="day-cond">Wolken</div>
+            <div class="day-temp-range">8° / 1°</div>
+        </div>
+        <div class="day-row">
+            <div class="day-name">Do</div>
+            <div class="day-cond">Schnee</div>
+            <div class="day-temp-range">3° / -2°</div>
+        </div>
+        <div class="day-row">
+            <div class="day-name">Fr</div>
+            <div class="day-cond">Sonnig</div>
+            <div class="day-temp-range">10° / -2°</div>
+        </div>
+        <div class="day-row">
+            <div class="day-name">Sa</div>
+            <div class="day-cond">Regen</div>
+            <div class="day-temp-range">9° / 0°</div>
+        </div>
+        <div class="day-row">
+            <div class="day-name">So</div>
+            <div class="day-cond">Bewölkt</div>
+            <div class="day-temp-range">3° / -2°</div>
+        </div>
+        <div class="day-row">
+            <div class="day-name">Mo</div>
+            <div class="day-cond">Schnee</div>
+            <div class="day-temp-range">4° / -4°</div>
+        </div>
+        <div class="day-row">
+            <div class="day-name">Di</div>
+            <div class="day-cond">Sonnig</div>
+            <div class="day-temp-range">5° / -4°</div>
+        </div>
+    </div>
+
+    <div class="footer-info">
+        Stand: 11. März 2026, 11:30 Uhr | Sonnberg Lift-Info
+    </div>
+
+</body>
+</html>
